@@ -30,7 +30,7 @@
       <!-- buttons -->
       <div class="clearBtns">
         <button>Clear completed</button>
-        <button>Clear all</button>
+        <button>Clear All</button>
       </div>
       <!-- pending task -->
       <div class="pendingTasks">
