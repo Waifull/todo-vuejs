@@ -28,7 +28,7 @@ export default {
         {
           id: 3,
           title: "Go shopping",
-          completed: false,
+          completed: true,
         },
         {
           id: 4,
