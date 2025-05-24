@@ -7,16 +7,13 @@
       </div>
       <!-- form -->
       <div class="form">
-        <input type="text" placeholder="New Task" v-model="newTask" @keyup.enter="addTask"/>
+        <input type="text" placeholder="New Task" v-model="newTask" @keyup.enter="addTask" />
         <button @click="addTask"><i class="fas fa-plus"></i></button>
       </div>
       <!-- task lists -->
       <div class="taskItems">
         <ul>
-          <li v-for="task in tasks" :key="task.id">
-            <button><i class="far fa-circle"></i> {{ task.title }}</button>
-            <button><i class="far fa-trash-alt"></i></button>
-          </li>
+          <TaskItem v-bind:task="task" v-for="task in tasks" :key="task.id"/>
         </ul>
       </div>
       <!-- buttons -->
@@ -33,13 +30,18 @@
 </template>
 
 <script>
+import TaskItem from './Task-item.vue';
+
 export default {
   name: 'Task',
   props: ['tasks'],
+  components: {
+    TaskItem,
+  },
   data() {
     return {
-      newTask: "",
-    }
+      newTask: '',
+    };
   },
   computed: {
     incomplete() {
@@ -47,13 +49,13 @@ export default {
     },
   },
   methods: {
-    addTask(){
-      if(this.newTask){
+    addTask() {
+      if (this.newTask) {
         this.tasks.push({
           title: this.newTask,
-          completed: false
+          completed: false,
         });
-        this.newTask = "";
+        this.newTask = '';
       }
     },
     inProgress(task) {
