@@ -13,7 +13,7 @@
       <!-- task lists -->
       <div class="taskItems">
         <ul>
-          <TaskItem v-bind:task="task" v-for="task in tasks" :key="task.id"/>
+          <TaskItem v-bind:task="task" v-for="(task, index) in tasks" :key="task.id" @remove="removeTask(index)"/>
         </ul>
       </div>
       <!-- buttons -->
@@ -70,6 +70,9 @@ export default {
     clearAll() {
       this.tasks = [];
     },
+    removeTask(index) {
+      this.tasks.splice(index, 1);
+    }
   },
 };
 </script>
